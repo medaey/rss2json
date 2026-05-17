@@ -17,44 +17,47 @@ chmod +x setup.sh
 
 ---
 
-## 📦 Requirements
-
-* Python 3.8+
-* feedparser
-
-Installed automatically via `setup.sh`.
-
----
-
 ## ⚙️ Usage
 
 ```bash
-rss2json "https://example.com/rss.xml"
+rss2json "https://news.ycombinator.com/rss"
 ```
 
-Example:
+Limit results:
 
 ```bash
-rss2json "https://news.ycombinator.com/rss"
+rss2json "https://news.ycombinator.com/rss" --limit=1
+```
+
+---
+
+## 🧪 Examples
+
+### First item
+
+```bash
+rss2json "https://news.ycombinator.com/rss" --limit=1 | jq '.items[0]'
+```
+
+### 5 titles
+
+```bash
+rss2json "https://news.ycombinator.com/rss" --limit=5 | jq '.items[].title'
 ```
 
 ---
 
 ## 📤 Output
 
-Returns structured JSON:
+Each item contains standard RSS fields plus full raw feedparser data:
 
 ```json
 {
-  "title": "Feed title",
-  "items": [
-    {
-      "title": "Article title",
-      "link": "https://...",
-      "published": "date",
-      "summary": "..."
-    }
-  ]
+  "title": "Article title",
+  "link": "https://...",
+  "published": "date",
+  "summary": "...",
+  "raw": { ... }
 }
 ```
 
@@ -64,44 +67,11 @@ Returns structured JSON:
 
 * Minimal CLI tool
 * No backend
-* No database
-* No web server
-* Works offline once feed is fetched
-* Unix-style composable output (JSON)
-
----
-
-## 🔧 Install globally (manual)
-
-If you prefer manual install:
-
-```bash
-sudo cp rss2json /usr/local/bin/rss2json
-sudo chmod +x /usr/local/bin/rss2json
-```
-
----
-
-## 🧪 Example with pipe tools
-
-```bash
-rss2json "https://news.ycombinator.com/rss" | jq '.items[].title'
-```
-
----
-
-## 📌 Future improvements (optional)
-
-* `--limit` support
-* `--output file.json`
-* caching (`~/.cache/rss2json`)
-* multiple feeds support
-* jq-friendly flat output mode
+* Unix-friendly output
+* Works well with `jq`
 
 ---
 
 ## 📄 License
 
 MIT
-
-```
