@@ -2,8 +2,10 @@
 
 set -e
 
-echo "Installing dependencies..."
-pip install -r requirements.txt
+echo "Checking requirements..."
+
+command -v python3 >/dev/null 2>&1 || apt update && apt install -y python3 python3-pip
+command -v git >/dev/null 2>&1 || apt update && apt install -y git
 
 echo "Installing rss2json to /usr/local/bin..."
 
