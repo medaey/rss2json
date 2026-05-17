@@ -36,7 +36,7 @@ rss2json "https://news.ycombinator.com/rss" --limit=1
 ### First item
 
 ```bash
-rss2json "https://news.ycombinator.com/rss" --limit=1 | jq '.items[0]'
+rss2json "https://news.ycombinator.com/rss" --limit=1 | jq '.items[]'
 ```
 
 ### 5 titles
