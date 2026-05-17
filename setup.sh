@@ -5,7 +5,7 @@ set -e
 echo "Checking requirements..."
 
 command -v python3 >/dev/null 2>&1 || apt update && apt install -y python3 python3-pip
-command -v git >/dev/null 2>&1 || apt update && apt install -y git
+command -v sudo >/dev/null 2>&1 || apt update && apt install -y sudo
 
 echo "Installing rss2json to /usr/local/bin..."
 
