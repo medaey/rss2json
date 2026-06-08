@@ -20,13 +20,13 @@ chmod +x setup.sh
 ## ⚙️ Usage
 
 ```bash
-rss2json "https://news.ycombinator.com/rss"
+rss2json "https://cyberveille.esante.gouv.fr/alertes-et-vulnerabilites/rss.xml"
 ```
 
 Limit results:
 
 ```bash
-rss2json "https://news.ycombinator.com/rss" --limit=1
+rss2json "https://cyberveille.esante.gouv.fr/alertes-et-vulnerabilites/rss.xml" --limit=1
 ```
 
 ---
@@ -36,13 +36,13 @@ rss2json "https://news.ycombinator.com/rss" --limit=1
 ### First item
 
 ```bash
-rss2json "https://news.ycombinator.com/rss" --limit=1 | jq '.items[]'
+rss2json "https://cyberveille.esante.gouv.fr/alertes-et-vulnerabilites/rss.xml" --limit=1 | jq '.items[]'
 ```
 
 ### 5 titles
 
 ```bash
-rss2json "https://news.ycombinator.com/rss" --limit=5 | jq '.items[].title'
+rss2json "https://cyberveille.esante.gouv.fr/alertes-et-vulnerabilites/rss.xml" --limit=5 | jq '.items[].title'
 ```
 
 ---
